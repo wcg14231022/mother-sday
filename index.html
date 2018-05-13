@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>妈，节日快乐</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet/less" href="./less/common.less">
+    <link rel="stylesheet/less" href="./less/index.less">
+    <script src="./js/less.js"></script>
+</head>
+
+<body>
+    <audio src="./img/audio_bg.mp3" autoplay loop></audio>
+    <main id="box">
+        <!--第一屏-->
+        <section class="section">
+            <div class="words fl">
+                <div class="page_1_words"><span>你就像是那一阵风</span></div>
+                <div class="page_1_words"><span>我就像那风中的蒲公英</span></div>
+                <div class="page_1_words"><span>你说我将走向我的世界</span></div>
+                <div class="page_1_words"><span>所以把我送到另一片天空</span></div>
+                <div class="page_1_img">
+                    <img src="./img/childs.png" id="page_1" alt="">
+                </div>
+
+            </div>
+        </section>
+        <!--第二屏-->
+        <section class="section">
+            <div class="words fl">
+                <div class="page_1_words"><span>现在的我</span></div>
+                <div class="page_1_words"><span>已经长大</span></div>
+                <div class="page_1_words"><span>今天的花</span></div>
+                <div class="page_1_words"><span>全部只属于你</span></div>
+                <div class="page_2_img">
+                    <img src="./img/timg_2.png" id="page_2" alt="">
+                </div>
+            </div>
+        </section>
+        <!--第三屏-->
+        <section class="section">
+            <div class="words fl page_3">
+                <div class="logo logoImg">
+                    <img src="./img/Logo.png" alt="">
+                </div>
+                <div class="logo_content logoImg">
+                    <img src="./img/Logo_content.png" alt="">
+                </div>
+                <div class="author logoImg"><span>——刘子扬——</span></div>
+            </div>
+        </section>
+    </main>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.fullpage.min.js"></script>
+    <script>
+        $(function () {
+            /*初始fullpage*/
+            $('main').fullpage({
+                // sectionsColor:['#0da5d6', '#2AB561', '#DE8910', '#16BA9D', '#0DA5D6'],
+                anchors: ['firstPage', 'secondPage', '3rdPage'],
+                menu: '#menu',
+                continuousVertical:true,
+                /*link 锚点连接  i  当前索引*/
+                afterLoad: function (link, i) {
+                    /*清除上次的当前样式*/
+                    $('section').removeClass('now');
+                    /*给当前选中的页面加上当前样式  now*/
+                    //console.log($(this));
+                    var $this = $(this);
+                    /*第一屏动画需要延时  防止没有时间差*/
+                    setTimeout(function () {
+                        $this.addClass('now');
+                    }, 200);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
